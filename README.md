@@ -50,7 +50,8 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 
 - ### 项目主页
 
-  ![home](home.png)
+  ![home](main.png)
+  ![home1](main2.png)
 
   - 左上角为项目名称：FF++_Detection。点击可跳转至主页。
   - 中心部分文字为项目logo及简介：FaceForensics++ 伪造人脸视频检测网站。
@@ -69,7 +70,7 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 
 - ### 注册页面
 
-  ![register](register.png)
+  ![signup](signup.png)
 
   - 中心部分从上至下三个输入框分别为用户名、密码、确认密码输入框。
   - 中心部分按钮为注册按钮，若用户名未被使用且密码合法，点击即可跳转至项目主页。
@@ -77,7 +78,7 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 
 - ### 上传本地图片页面
 
-  ![local](local.png)
+  ![upload](upload.png)
 
   - 中心部分从上至下两个输入框分别为视频标题输入框、视频文件选择框。
   - 中心部分按钮为上传按钮，若上传成功则跳转至视频展示页面。
@@ -85,7 +86,7 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 
 - ### 视频列表展示页面
 
-  ![process_videos](videos.png)
+  ![videosList](video_list.png)
 
   - 左上角logo为项目主页导航按钮，点击即可跳转至项目主页，下面文字为项目介绍。
   - logo下方从上至下依次为：
@@ -99,7 +100,7 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 
 - ### 视频详情页面
 
-  ![process_detail](detail.png)
+  ![videosDetail](video_informations.png)
 
   - 左边从上至下的链接依次为：
 
@@ -118,7 +119,7 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 
 - ### 模型检测检测界面
  
-  ![process_detect](detect.png)
+  ![modelDetect](model_detect.png)
   
   - 左边从上至下的链接依次为：
     - 视频列表展示链接，点击可以跳转到视频列表界面。
@@ -133,7 +134,8 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 
 - ###  检测结果界面
  
-  ![process_result](result.png)
+  ![result1](result.png)
+  ![result2](result1.png)
 
   - 左边从上至下的链接依次为：
     - 视频列表展示链接，点击可以跳转到视频列表界面。
@@ -150,7 +152,7 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 
 - ###  阈值提取界面
  
-  ![model_details](threshold.png)
+  ![threshold](threshold.png)
 
   - 左边从上至下的链接依次为：
     - 上传本地视频链接
@@ -170,13 +172,16 @@ Based on dataset FaceForensics++ build a deepfakes detection website
 - 模型检测的视频帧和人脸图片的相对存储路径为：./preprocess_images。
 - 模型检测后合成的结果视频的相对存储路径为：./media/in_out_videos/result
 - 对时长比较久的视频进行模型检测耗时较长（cpu至少2分钟），期间请耐心等待网页返回结果。
-
+- Django中大部分路径使用的是绝对路径（相对路径总是出错，目前还没找到好的解决办法）
 - 已经训练好的深度学习模型存放在faceforensics++_models
 
 ## 五、参考GitHub、网站
 
 - https://detectfakes.media.mit.edu/#
 - https://github.com/iltyty/PictureSite
+- https://github.com/ondyari/FaceForensics/#citation
+- https://pytorch.zhangxiann.com/
+- https://www.cnblogs.com/lucifer1997/p/12310743.html
 
 
 

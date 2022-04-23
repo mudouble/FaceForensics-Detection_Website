@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+FF_Detection 
+{% endblock %}
+
+{% block header %}
+<!-- Header -->
+<header class="masthead">
+	<div class="container d-flex h-100 align-items-center">
+		<div class="mx-auto text-center">
+			<h1 class="mx-auto my-0 text-uppercase" style="color: #161616">FF++_Detection</h1>
+			<h2 class="text-white-50 mx-auto mt-2 mb-5">
+				A Facial Videos Forgery Detection Based on Dataset FaceForensics++
+			</h2>
+			{% if user.is_authenticated %}
+			{% if user.is_superuser %}
+			<a href="{% url 'admin_videoshow' adminname=user.username %}"
+				class="btn btn-primary js-scroll-trigger">
+				Get started
+			</a>
+			{% else %}
+			<a href="{% url 'user_videoshow' username=user.username %}" class="btn btn-primary js-scroll-trigger">
+				Get started
+			</a>
+			{% endif %}
+			{% else %}
+			<a href="{% url 'login' %}" class="btn btn-primary js-scroll-trigger" style="width: 30%;opacity: 0.7;">
+				Get started
+			</a>
+			{% endif %}
+		</div>
+	</div>
+</header>
+{% endblock %}
+<!-- About Section -->
+{% block navigation %}
+<section id="about" class="about-section text-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 mx-auto">
+				<h2 class="text-white mb-4">What can you do on this website ?</h2>
+				<p class="text-white-50" style="text-align: left;font-size: 1.2em;">
+					① You should signup and login firstly.<br><br>
+					② Then have a quick flip through the knowledge about deepfakes in this section. <br><br>
+					③ Also, you can upload videos and watch the deepfakes videos(mainly from FaceForensics++ Dataset), and guess the videos are fake or real. <br><br>
+					④ Importantly, you are able to choose the different detection models to detect the videos, there will show you the process of frames extract and face extract,
+					and the result. <br> <br>
+					⑤ Finally, you can watch the models detail in models_information section. <br> <br>
+					Wish you gain something on this website!
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

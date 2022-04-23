@@ -1,0 +1,131 @@
+{% extends 'process_base.html' %}
+{% load staticfiles %}
+
+{% block nav %}
+<nav class="probootstrap-nav">
+    <ul>
+        <!-- <li class="probootstrap-animate " data-animate-effect="fadeInLeft">
+            <a href="">Videos Information</a>
+        </li> -->
+        <li class="probootstrap-animate " data-animate-effect="fadeInLeft">
+            <a href="{% url 'upload_videos' %}">Upload Videos</a>
+        </li>
+        <li class="probootstrap-animate " data-animate-effect="fadeInLeft">
+            <a href="{% url 'user_videoshow' username=user.username %}">Forged Facial Videos List</a>
+        </li>
+        <!-- <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="">Detection with models</a>
+        </li> -->
+        <li class="probootstrap-animate active" data-animate-effect="fadeInLeft">
+            <a href="">Models Result</a>
+        </li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            {% if user.is_superuser %}
+            <a href="{% url 'admin_videoshow' adminname=user.username %}">Back</a>
+            {% else %}
+            <a href="{% url 'user_videoshow' username=user.username %}">Back</a>
+            {% endif %}
+        </li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="{% url 'logout' %}">Log out</a>
+        </li>
+    </ul>
+</nav>
+
+{% endblock %}
+
+
+
+{% block card %}
+<h3 class="fronts">{{totallen}} frames were detected</h3>
+<div id="preprocessed_images" class="col-12 mt-4 mb-2">
+    {% for each_image in detectImg %}
+    <img src="{% static each_image %}" class="preprocess" width=auto height="250" />
+    {%endfor%}
+</div>
+
+<h3 class="fronts" style="margin-top: 40px;">Choose a threshold value to show</h3>
+<form action="{% url 'result' %}" method="post">
+    <div style="display: flex;">
+        <p class="fronts">threshold value: </p>
+        <span style="width: 10px;"></span>
+        <input type="range" name="gs" class="slider2" id="myRange" oninput="change()" onchange="change()" style="width: 60%;">
+        <span style="width: 50px;"></span>
+        <input class="btn btn-primary " type="submit" style="float: none !important;height: 30px;" ></input>
+    </div>
+    <div style="display: flex;">
+        <p class="fronts">you choose the threshold is </p>
+        <span style="width: 10px;"></span>
+        <p id="demo" style="color: red;">{{yuzhi}}</p>    
+    </div>
+      
+</form>
+
+<div style="display: flex;">
+   <p style="color:red">{{len}}</p>
+   <span style="width: 10px;"></span>
+   <p class="fronts" >{{p}}</p> 
+</div>
+
+<div id="preprocessed_images" class="col-12 mt-4 mb-2">
+    {% for each_image in threshold %}
+    <img src="{% static each_image %}" class="preprocess" width=auto height="250" />
+    {%endfor%}
+</div>
+<div></div>
+
+<style>
+     .fronts{
+         color: black;
+     }
+     
+      .slider2 {
+        -webkit-appearance: none;
+        max-width: 350px;
+        width: 100%;
+        height: 10px;
+        border-radius: 5px;
+        background: #1B2B33;
+        outline: none;
+        margin-top: 10px;
+        /* margin-bottom: 30px */
+      }
+     
+      .slider2::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0,0,0,.5);
+        border:1px solid #eee;
+        cursor: pointer;
+      }
+     
+      .slider2::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,.1);
+        cursor: pointer;
+      }
+      
+</style>
+    
+
+<script type='text/javascript'>
+
+    function change() {
+            
+          var newValue = document.getElementById('myRange').value / 100 ;
+          
+          document.getElementById("demo").innerHTML=newValue
+         
+        }
+    
+</script>
+
+{% endblock %}
+

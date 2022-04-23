@@ -1,0 +1,79 @@
+{% extends 'process_base.html' %}
+{% load staticfiles %}
+
+
+
+{% block nav %}
+<nav class="probootstrap-nav">
+    <ul>
+        <li class="probootstrap-animate " data-animate-effect="fadeInLeft">
+            <a href="{% url 'user_videoshow' username=user.username %}">Forged Facial Videos List</a>
+        </li>
+        <li class="probootstrap-animate  active" data-animate-effect="fadeInLeft">
+            <a href="#predict">Detection with models</a>
+        </li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="{% url 'modelsinfo' %}">Models Reslut</a>
+        </li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            {% if user.is_superuser %}
+            <a href="{% url 'admin_videoshow' adminname=user.username %}">Back</a>
+            {% else %}
+            <a href="{% url 'user_videoshow' username=user.username %}">Back</a>
+            {% endif %}
+        </li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="{% url 'logout' %}">Log out</a>
+        </li>
+    </ul>
+</nav>
+
+{% endblock %}
+
+
+
+{% block card %}
+<style>
+    .fonts{
+           font-family: Oxygen,sans-serif;line-height: 1.5em;color: #333; 
+        }
+</style>
+<section  id="predict">
+    <p class="fonts" id="v_model" value="{{modelname}}">Using {{modelname}} Finshing !</p>
+    <p style="font-size:1.5em;color: black;">Frames Split</p>
+    <div id="preprocessed_images" class="col-12 mt-4 mb-2">
+        {% for each_image in preprocessed_images %}
+        <img src="{% static each_image %}" class="preprocess" width=auto height="250" />
+        {%endfor%}
+    </div>
+
+
+    <h3>Face Cropped Frames</h3>
+    <div id="faces_images" class="col-12 mb-2">
+    {% for each_image in faces_cropped_images %}
+    <img src="{% static each_image %}" class="faces" width=auto height="150" />
+    {%endfor%}  
+    </div>
+
+    <div class="result text-center" style="box-shadow: 0 0px 9px 2px #ccc;width: 100%; height: 100%; margin-top: 50px;">
+        <h3>Play to see Result</h3>
+        <video autoplay height="320" width="840" id="predict-media" codecs="avc1.4d002a" controls src="{{detect_videos}}" type='video/mp4'></video>
+        
+        <div style="display:flex;color: #333; margin-left: 50px;margin-top: 10px;">
+            <h4 >Forgey Method:</h4>
+            <span style="width: 10px;"></span>
+            <h4 style="color: red;"> {{forging_method}}</h4 >
+        </div>
+        <div style="display:flex; color: #333; margin-left: 50px;margin-top: 10px;">
+            <h4 >Compressed Format:</h3>
+            <span style="width: 10px;"></span>
+            <h4 style="color: red;"> {{compressed_format}}</h3>
+        </div>
+       
+    </div>
+    <!-- <a href="{% url 'result' %}" class="btn btn btn-lg btn-primary btn-block">reslut details</a>\
+    \\\\->
+    
+</section>
+{% endblock %}
+

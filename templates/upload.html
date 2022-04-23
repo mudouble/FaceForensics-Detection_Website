@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Upload
+{% endblock %}
+ 
+{% block css %}
+<link href="{% static 'bootstrap/css/upload.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<h1 align="center">Upload a Video</h1>
+<form method="post" enctype="multipart/form-data" class="form-upload">
+	{% csrf_token %}	
+	{{ form.title.label_tag }}<br>
+	{{ form.title }}<br>
+	{{ form.videos.label_tag }}<br>
+	{{ form.videos }}<br>
+	{% for post in form %}
+	{% for error in post.errors %}
+	<p style="color: red">{{ post.label_tag }} {{ error }}</p>
+	{% endfor %}
+	{% endfor %}
+
+	<br>
+	<button class="btn btn-lg btn-primary btn-block" id="upload" type="submit" style="width: 109%;">Upload</button>
+</form>
+{% endblock %}

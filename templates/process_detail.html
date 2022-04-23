@@ -1,0 +1,86 @@
+{% extends 'process_base.html' %}
+{% load staticfiles %}
+
+{% block nav %}
+
+<nav class="probootstrap-nav">
+    <ul>
+        <li class="probootstrap-animate active" data-animate-effect="fadeInLeft">
+            <a href="">Videos Information</a>
+        </li>
+        <li class="probootstrap-animate " data-animate-effect="fadeInLeft">
+            <a href="{% url 'user_videoshow' username=user.username %}">Forged Facial Videos List</a>
+        </li>
+        <!-- <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="">Detection with models</a>
+        </li> -->
+        <!-- <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="{% url 'modelsinfo' %}">Models Result</a>
+        </li> -->
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            {% if user.is_superuser %}
+            <a href="{% url 'admin_videoshow' adminname=user.username %}">Back</a>
+            {% else %}
+            <a href="{% url 'user_videoshow' username=user.username %}">Back</a>
+            {% endif %}
+        </li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="{% url 'logout' %}">Log out</a>
+        </li>
+    </ul>
+</nav>
+
+{% endblock %}
+
+
+{% block card %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center" style="margin-top: -30px;">
+        <div class="col-xl-8 col-lg-12" id="card-div">
+            <div class="row" >
+                <div class="col-xl-8 col-lg-12 mx-auto" >
+                    <h4 align="center" >Title: {{ title }}</h4>
+
+                    <video autoplay style="border: 10px solid rgba(0, 0, 0) ;border-radius: 5px; width: 150%;right: 30%!important;position: relative;" class="probootstrap-animate"  controls  src="{{videos}}"></video>
+                    <p style="font-size:1.5em;color: black; ">Try to guess real or fake?</p>
+                    <input style="width: 100%;" type="range" min="0" max="100" value="50" step="1" class="ne-range" id="myRange" oninput="change()" onchange="change()">
+                    <p><span id="demo" style="color:#cc4125; font-weight: bold; font-size: 1.2em;">Just as likely real or fake</span></p>
+                                 
+                </div>
+            </div>
+       
+            <a href="{% url 'detect_models' pk=title %}"  class="btn btn-lg btn-primary btn-block"  style="font-size: 1.3em; margin-top: 2%;">Choose models to detect</a>
+            
+        </div>
+    </div>
+    
+</div>
+
+<style>
+    .fonts{
+            font-size:1.5em;font-family: Oxygen,sans-serif;line-height: 1.5em;color: #333;font-weight: 600!important
+        }
+    
+
+</style>
+
+<script type='text/javascript'>
+    function change() {
+      var newValue = document.getElementById('myRange').value ;
+      if (newValue == 50){
+            document.getElementById("demo").innerHTML="Just as likely real or fake"
+        }
+        else if (newValue > 50){
+           
+            document.getElementById("demo").innerHTML=newValue+"% likehood fake"
+        }
+        else {
+            
+            document.getElementById("demo").innerHTML=100-newValue+"% likehood real"
+        }
+     
+    }
+    </script>
+
+{% endblock %}

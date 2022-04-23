@@ -1,0 +1,76 @@
+body {
+  overflow-y:overhidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: #abbaab;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  /* background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(22, 22, 22, 0.3)),
+      color-stop(75%, rgba(22, 22, 22, 0.7)),
+      to(#161616)
+    ),
+    url("../../img/bg-masthead.jpg");
+  background: linear-gradient(
+      to bottom,
+      rgba(22, 22, 22, 0.3) 0%,
+      rgba(22, 22, 22, 0.7) 75%,
+      #161616 100%
+    ),
+    url("../../img/bg-masthead.jpg"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+h1 {
+  font-family: "Varela Round";
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.8rem;
+  background: -webkit-linear-gradient(
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0)
+  );
+  -webkit-background-clip: text;
+  margin-bottom: 10px;
+}
+
+.form-login {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.form-login .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-login > input {
+  border-radius: 5px;
+  border: 1px solid gray;
+  position: relative;
+  height: auto;
+  width: 100%;
+  box-sizing: content-box;
+  font-size: 20px;
+}
+
+.form-login > input:focus {
+  z-index: 2;
+}
+
+#signin {
+  margin-bottom: 260px;
+}

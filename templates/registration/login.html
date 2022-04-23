@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Login{% endblock %}
+
+{% block css %}
+<link href="{% static 'bootstrap/css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<form method="post" class="form-login">
+	{% csrf_token %}
+	<h1>Login</h1>
+
+	{% for field in form %}
+	{{ field.label_tag }}<br>
+	{{ field }}<br>
+	{% for error in field.errors %}
+	<p style="color: red">{{ error }}</p>
+	{% endfor %}
+	{% endfor %}
+
+	<br>
+	<label>
+		<input type="checkbox" value="remember-me"> Remember me
+	</label>
+
+	<button class="btn btn-lg btn-primary btn-block" id="signin" type="submit">Log in</button>
+</form>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'process_base.html' %}
+
+{% block nav %}
+<nav class="probootstrap-nav">
+    <ul>
+        <li class="probootstrap-animate " data-animate-effect="fadeInLeft">
+            <a href="{% url 'upload_videos' %}">Upload Videos</a>
+        </li>
+        <li class="probootstrap-animate active" data-animate-effect="fadeInLeft">
+            <a href="{% url 'user_videoshow' username=user.username %}">Forged Facial Videos List</a>
+        </li>
+        <!-- <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="{% url 'modelsinfo' %}">Models Result</a>
+        </li> -->
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft">
+            <a href="{% url 'logout' %}">Log out</a>
+        </li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block cards %}
+<div class="card-columns">
+    {% for post in object_list %}
+    <div class="card" >
+        <p>&ensp;{{ post.title }}&ensp;</p>  
+        {% if post.videos %}
+        <a href="{% url 'details' post.pk %}">
+            <video class="card-img-top probootstrap-animate" src="{{ post.videos.url }}" alt="{{ post.title }}"
+                data-animate-effect="fadeIn" >
+        </a>
+        {% endif %}
+    </div>
+    {% empty %}
+    <div >
+       <p class="text-white-50 mx-auto mt-2 mb-5" >
+        There's no video currently!
+        <p>
+        <a href="{% url 'upload_videos' %}" class="btn btn-primary js-scroll-trigger" style="position: absolute;margin-top: 5%;">
+           go to upload videos
+        </a> 
+    </div>
+    
+    {% endfor %} 
+</div>
+
+
+
+{% endblock %}

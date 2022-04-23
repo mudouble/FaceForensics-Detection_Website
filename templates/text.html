@@ -1,0 +1,147 @@
+<!-- http://127.0.0.1:8000/videos/process/ds/878_866_fs/XceptionNet
+ <p id="v_title" >878_866_fs</p>
+ <p id="v_model">XceptionNet</p>
+ <h3>Choose a yuzhi</h3>
+ <p id="yuzhi" value="22">34</p>
+ <button onclick="yuzhi()" class="btnyuzhi">get</button>
+ <div id="faces_images" class="col-12 mb-2">
+
+<script src="{% static 'js/jquery-1.12.4.js' %}">
+    $(function () {
+       $(".btnyuzhi").on('click', function() {
+           // 获取用户名和密码
+           var u ="kkkkk";
+           var pk = document.getElementById("v_title").innerHTML 
+           var m = document.getElementById("v_model").innerHTML
+           // 发起ajax请求
+           $.ajax({
+               url: "/videos/process/ds/pk/m",  // 请求的地址
+               type: "post",  // 请求方式
+               // 请求时传递过去的数据
+               data:{"yuzhi": u, "kk": pk, "k": m},
+               dataType: "json",  // 返回的数据格式
+               async: true,  // 异步的ajax
+           }).success(function (data) {
+              
+
+           })
+       })
+   })
+
+</script> -->
+
+
+<!-- <div>
+    <div class="demo">
+       <input type="hidden" class="range-slider" value="20,30"/>
+       <input id="g2" type="button" value="获取刻度值">
+   </div>
+</div> -->
+<!-- 
+<script>
+    $('.range-slider').jRange({
+ 		from: 0, // 开始于
+		to: 100, // 结束于
+		step: 1, // 一次滑动多少
+		scale: [0,25,50,75,100],  // 分割点
+		format: '%s',  // 格式化格式
+		width: 300, // 宽度
+		showLabels: true, // 是否显示滑动条下方的尺寸标签
+		showScale: true,  // 是否显示滑块上方的数值标签
+		isRange:true  // 是否选取范围
+	});
+</script> -->
+<!-- <style> -->
+<!-- .slider-container .back-bar .pointer-label {  /*设置上标尺的字体大小，背景色，位置*/
+  position: absolute;
+  top:-17px;
+  font-size: 12px; 
+  background: #ffffff; 
+  white-space: nowrap;
+  line-height: 1;
+} -->
+<!-- .slider-container .scale ins { /*设置下标尺的字体大小，背景色，位置*/
+  font-size: 12px; 
+  text-decoration: none;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  color: #999;
+  line-height: 1;
+} -->
+<!-- .theme-green .back-bar { /*滚动条设置*/
+  height: 1px; /*滚动条的高度*/
+  border-radius: 2px;
+  background-color: #eeeeee;
+  background-color: #e7e7e7;
+  background-color: #0080ff;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(to bottom, #0080ff, #0080ff); /*滚动条未被选中部分的颜色*/
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
+}
+.theme-green .back-bar { /*滚动条设置*/
+  height: 1px; /*滚动条的高度*/
+  border-radius: 2px;
+  background-color: #eeeeee;
+  background-color: #e7e7e7;
+  background-color: #0080ff;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(to bottom, #0080ff, #0080ff); /*滚动条未被选中部分的颜色*/
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
+}
+.theme-green .back-bar .selected-bar { /*被选中的滚动条*/
+  border-radius: 2px;
+  background-color: #a1fad0;
+  background-image: -moz-linear-gradient(top, #bdfade, #76fabc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bdfade), to(#76fabc));
+  background-image: -webkit-linear-gradient(top, #bdfade, #76fabc);
+  background-image: -o-linear-gradient(top, #bdfade, #76fabc);
+  background-image: linear-gradient(to bottom, #ff0080, #ff0080); /*设置被选中部分的滚动条的颜色*/
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbdfade', endColorstr='#ff76fabc', GradientType=0);
+}
+.theme-green .back-bar .pointer { /*滑块设置*/
+  width: 5px;
+  height: 5px;
+  top: -2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #0000a0; 
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(to bottom, #0000a0, #8000ff); /*渐变色*/
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
+}
+.theme-green .back-bar .pointer-label { /*上标尺颜色*/
+  color: #0080ff;
+}
+.theme-green .scale span { /*滑条下方刻度样式设置*/
+  border-left: 	1px solid #e5e5e5;
+}
+.theme-green .scale ins { /*下标尺颜色*/
+  color: #0080ff;
+}
+</style> -->
+
+
+<html>
+  <script>
+    max = 10000003
+    random_num=parseInt(Math.random()*(max+1),10)
+    document.write(random_num)
+    </script>
+</html>

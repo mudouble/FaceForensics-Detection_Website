@@ -1,0 +1,129 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Detection</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Free HTML5 Website Template by ProBootstrap.com" />
+    <meta name="keywords"
+        content="free bootstrap 4, free bootstrap 4 template, free website templates, free html5, free template, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="ProBootstrap.com" />
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-datetimepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script src="{% static 'bootstrap/js/moment.js' %}"></script>
+    <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap-datetimepicker.min.js' %}"></script>
+    <link href="{% static 'bootstrap/css/upload.css' %}" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-1.8.0.js"></script>
+    <link rel="stylesheet" href="css/jquery.range.css">
+    <script src="js/jquery.range.js"></script>
+</head>
+
+<body>
+
+    <aside class="probootstrap-aside js-probootstrap-aside">
+        <a href="#" class="probootstrap-close-menu js-probootstrap-close-menu d-md-none"><span
+                class="oi oi-arrow-left"></span> Close</a>
+        <div class="probootstrap-site-logo probootstrap-animate" data-animate-effect="fadeInLeft">
+
+            <a href="{% url 'home' %}" class="mb-2 d-block probootstrap-logo">FF++_Detection</a>
+            <p class="mb-0">Forgery Videos Detection Website</p>
+        </div>
+        <div class="probootstrap-overflow">
+            {% block nav %}
+            {% endblock %}
+            <footer class="probootstrap-aside-footer probootstrap-animate" data-animate-effect="fadeInLeft">
+                {% if user.is_superuser %}
+                <h5 class="mb-0" align="center">Welcome! Admin:{{ user.username }}</h5>
+                {% else %}
+                <h5 class="mb-0" align="center">Welcome! User:{{ user.username }}</h5>
+                {% endif %}
+                <!-- <ul class="list-unstyled d-flex probootstrap-aside-social">
+                    <li><a href="" class="p-2"><span class="icon-twitter"></span></a></li>
+                    <li><a href="" class="p-2"><span class="icon-github"></span></a></li>
+                    <li><a href="" class="p-2"><span class="icon-facebook"></span></a></li>
+                </ul> -->
+                <br>
+                <p>&copy; 2022 lgy<br> All Rights Reserved.</p>
+            </footer>
+        </div>
+    </aside>
+
+
+    <main role="main" class="probootstrap-main js-probootstrap-main">
+        <div class="probootstrap-bar">
+            <a href="#" class="probootstrap-toggle js-probootstrap-toggle"><span class="oi oi-menu"></span></a>
+            <div class="probootstrap-main-site-logo"><a href="index.html">Aside</a></div>
+        </div>
+
+        {% block cards %} {% endblock %}
+        {% block card %} {% endblock %}
+        <div class="container-fluid d-md-none">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-unstyled d-flex probootstrap-aside-social">
+                        <li><a href="#" class="p-2"><span class="icon-twitter"></span></a></li>
+                        <li><a href="#" class="p-2"><span class="icon-instagram"></span></a></li>
+                        <li><a href="#" class="p-2"><span class="icon-dribbble"></span></a></li>
+                    </ul>
+                    <p>&copy; 2022 lgy <br> All Rights Reserved. Designed by lgy</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="page-container">
+        {% if is_paginated %}
+        <nav aria-label="Page navigation example">
+            <ul class="Pager pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="previous page-item" style="list-style-type:none;float:left;">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                </li>
+                {% else %}
+                <li class="previous page-item disabled" style="list-style-type:none;float:left;">
+                    <a class="page-link" href="">&laquo;</a>
+                </li>
+                {% endif %}
+                &ensp;
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>&ensp;
+                {% if page_obj.has_next %}
+                <li class="next page-item" style="list-style-type:none;float:right;">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo</a></li>
+                {% else %}
+                <li class="next page-item disabled" style="list-style-type:none;float:right;">
+                    <a class="page-link" href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </footer>
+
+</body>
+
+</html>

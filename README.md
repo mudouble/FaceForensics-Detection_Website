@@ -1,6 +1,7 @@
 # DeepFakes-Detection-Website
 Based on dataset FaceForensics++ build a deepfakes detection website
-##### 廖桂樱 https://github.com/mudouble/DeepFakes-Detection-Website.gitite.git
+##### 廖桂樱 
+##### https://github.com/mudouble/DeepFakes-Detection-Website
 
 ## 一、环境说明
 
